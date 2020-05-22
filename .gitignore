@@ -5,4 +5,7 @@
 
 # local
 /try*
+
+# file
 !try.py
+*.exe
