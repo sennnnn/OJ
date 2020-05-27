@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <math.h>
 #include <algorithm>
+#include <string.h>
 
 using namespace std;
 
@@ -77,6 +78,26 @@ int MaxSubSum_4(int list[], int n){
     return max_so_far;
 }
 
+// dp2
+int max_count[100];
+int MaxSubSum_5(int list[], int n){
+    int max_all = -999999999;
+    memset(max_count, 0, sizeof(int)*100); max_count[0] = list[0];
+    for(int i = 1; i < n; i++){
+        max_count[i] = list[i];
+        if(max_count[i-1] + list[i] > max_count[i]){
+            max_count[i] = max_count[i-1] + list[i];
+        }
+    }
+
+    for(int i = 0; i < n; i++){
+        if(max_count[i] > max_all) max_all = max_count[i];
+    }
+
+    return max_all;
+}
+
+
 int main(){
     int n;
     int list[100];
@@ -86,7 +107,7 @@ int main(){
         for(int i = 0; i < n; i++){
             scanf("%d", &list[i]);
         }
-        maxsubsum = MaxSubSum_4(list, n);
+        maxsubsum = MaxSubSum_5(list, n);
         printf("%d\n", maxsubsum);
     }
 }
