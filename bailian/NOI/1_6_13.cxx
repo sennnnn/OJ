@@ -21,8 +21,8 @@ int main(){
     for(k = 2; k <= 9; k++){
         temp = 0;
         io = 0;
+        // temp 实际上就是保留的每一次除法的余数, 由于 k 只有个位数, 所以每次除法完毕之后只需要移一位
         for(int i = 0; i < len; i++){
-            // printf("1");
             temp = temp*10 + (c[i] - '0');
             o[io++] = temp/k + '0';
             temp = temp%k;
