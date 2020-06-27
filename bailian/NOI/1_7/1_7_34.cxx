@@ -4,67 +4,34 @@
     日期: 2020 年 6 月 26 日
 */
 
-// #include <stdio.h>
-// #include <string.h>
+#include <stdio.h>
+#include <string.h>
 
-// int main(){
-//     int len, count;
-//     char s[600];
-//     int sub[600][2];
-//     scanf("%s", s);
-//     len = strlen(s); count = 0;
-//     for(int i = 1; i < len; i++){
-//         for(int j = 0; j < len-i; j++){
-//             int flag = 1;
-//             for(int k = j; k <= (j+j+i)/2; k++){
-//                 if(s[k] != s[j+j+i-k]) flag = 0;
-//             }
-//             if(flag){
-//                 sub[count][0] = j; 
-//                 sub[count][1] = j+i;
-//                 count++;
-//             }
-//         }
-//     }
-//     for(int i = 0; i < count; i++){
-//         for(int j = sub[i][0]; j <= sub[i][1]; j++){
-//             printf("%c", s[j]);
-//         }
-//         printf("\n");
-//     }
-// }
+bool isPa(char *s, int start, int end){
+    end = end - 1;
+    for(int k = start; k <= (start+end)/2; k++){
+        if(s[k] != s[start+end-k]) return false;
+    }
+    return true;
+}
 
-#include<stdio.h>
-#include<string.h>
-int f(char a[],int i,int j)
-{
-    int k=0;
-    int n=i,m=j;
-    while(i<=j)
-    {
-        if(a[i]!=a[j]){k=1;}
-        i++;
-        j--;
+void show(char *s, int start, int end){
+    for(int i = start; i < end; i++){
+        printf("%c", s[i]);
     }
-    if(k==0)
-    {
-        for(n=i;n<=m;n++)
-        printf("%c",a[n]);
-        printf("\n");
+    printf("\n");
+}
+
+int main(){
+    int len, count;
+    char s[600];
+    scanf("%s", s);
+    len = strlen(s); count = 0;
+    for(int i = 2; i <= len; i++){
+        for(int j = 0; j < len-i+1; j++){
+            if(isPa(s, j, j+i)){
+                show(s, j, j+i);
+            }
+        }
     }
-    return 0;
-}
-main()
-{
-char a[20];
-int i,j,n;
-scanf("%s",a);
-for(i=2;i<=strlen(a);i++)
-{
-for(j=0;j+i<=strlen(a);j++)
-{
-n=f(a,j,j+i-1);
-}
-}
-return 0;
 }
