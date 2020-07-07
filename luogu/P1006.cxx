@@ -51,39 +51,39 @@ int main(){
 
 
 // 四维 DP 过不了
-// #include <stdio.h>
-// #include <string.h>
+#include <stdio.h>
+#include <string.h>
 
-// int max(int a, int b){
-//     if(a > b) return a;
-//     else return b;
-// }
+int max(int a, int b){
+    if(a > b) return a;
+    else return b;
+}
 
-// int main(){
-//     int m, n, i, j, k, l, mx;
-//     printf("1");
-//     int state[51][51], dp[51][51][51][51];
-//     scanf("%d %d", &m, &n);
-//     for(i = 1; i <= m; i++){
-//         for(j = 1; j <= n; j++){
-//             scanf("%d", &state[i][j]);
-//         }
-//     }
-//     memset(state, 0, sizeof(state)); 
-//     memset(dp, 0, sizeof(dp));
-//     for(i = 1; i <= m; i++){
-//         for(j = 1; j <= n; j++){
-//             for(k = i; k <= m; i++){
-//                 for(l = j; j <= n; j++){
-//                     mx = -1;
-//                     mx = max(dp[i-1][j][k-1][l], mx);
-//                     mx = max(dp[i-1][j][k][l-1], mx);
-//                     mx = max(dp[i][j-1][k-1][l], mx);
-//                     mx = max(dp[i][j-1][k][l-1], mx);
-//                     dp[i][j][k][l] = mx;
-//                 }
-//             }
-//         }
-//     }
-//     printf("%d\n", dp[m][n][m][n]);
-// }
+int main(){
+    int m, n, i, j, k, l, mx;
+    printf("1");
+    int state[51][51], dp[51][51][51][51];
+    scanf("%d %d", &m, &n);
+    for(i = 1; i <= m; i++){
+        for(j = 1; j <= n; j++){
+            scanf("%d", &state[i][j]);
+        }
+    }
+    memset(state, 0, sizeof(state)); 
+    memset(dp, 0, sizeof(dp));
+    for(i = 1; i <= m; i++){
+        for(j = 1; j <= n; j++){
+            for(k = i; k <= m; i++){
+                for(l = j; j <= n; j++){
+                    mx = -1;
+                    mx = max(dp[i-1][j][k-1][l], mx);
+                    mx = max(dp[i-1][j][k][l-1], mx);
+                    mx = max(dp[i][j-1][k-1][l], mx);
+                    mx = max(dp[i][j-1][k][l-1], mx);
+                    dp[i][j][k][l] = mx;
+                }
+            }
+        }
+    }
+    printf("%d\n", dp[m][n][m][n]);
+}
