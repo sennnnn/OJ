@@ -34,6 +34,12 @@ int main(){
             }
         }
     }
+    for(int i = 1; i <= N; i++){
+        for(int j = 1; j <= M; j++){
+            cout << dp[i][j] << ' ';
+        }
+        cout << endl;
+    }
     cout << dp[N][M] << endl;
 }
 
