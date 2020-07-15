@@ -36,10 +36,10 @@ int main(){
                 if(state[i][j] == process[i][j]) k4++;
             }
         }
-        if(k1 == n*n) cout << 90 << endl;
+        if(k4 == n*n) cout << 0 << endl;
+        else if(k1 == n*n) cout << 90 << endl;
         else if(k2 == n*n) cout << 180 << endl;
         else if(k3 == n*n) cout << 270 << endl;
-        else if(k4 == n*n) cout << 0 << endl;
         else cout << -1 << endl;
     }
 }

@@ -18,7 +18,7 @@ int main(){
 	while(cin >> n){
 		vector<int> temp;
 		flag = 0;
-		for(int i = 2; i <= n; i++){
+		for(int i = 2; i < n; i++){
 			if(ifPrime(i)){
 				if(i % 10 == 1){
 					temp.push_back(i);
